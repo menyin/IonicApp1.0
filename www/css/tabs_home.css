@@ -1,0 +1,14 @@
+#tabs_home .banner{ margin-top:2px; }
+#tabs_home .banner .swiper-slide{text-align: center;}
+#tabs_home .banner .swiper-slide img{width: 98%; box-shadow:0 1px 4px rgba(0,0,0,.2);}
+
+  /*图标导航样式*/
+#tabs_home .nav_list{margin:10px 0;}
+#tabs_home .nav_list .row .col a{ display:block; position:relative; margin:5% auto; text-align:center; width:74%; line-height:35px; }
+#tabs_home .nav_list .row .col a img{ display:block; margin:auto; width:100%; }
+#tabs_home .section {margin:20px 0;}
+#tabs_home  .video_list .card,#tabs_home .down_item{float:left;width: 31%;margin:1%;padding:0;}
+#tabs_home .down_item img{width:100%;border:1px solid #f7f7f7; }
+
+#tabs_home .footer{height:50px;line-height:50px;text-align:center;font-size:12px;background:#f7f7f7;margin-top:20px;}
+#tabs_home .footer a{color:#0088D1;margin:4px;font-size:16px;}

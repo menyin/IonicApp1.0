@@ -22,9 +22,13 @@ angular.module('route', ['oc.lazyLoad'])
         url: '/home',
         views: {
           'tabs_home': {
-            templateUrl: 'views/tabs_home.html'
+            templateUrl: 'views/tabs_home.html',
+            controller: 'tabs_home_act'
           }
-        }
+        },
+        resolve: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load(['ctrls/tabs_home_ctrl.js']);
+        }]
       })
 
     /*账户页*/
@@ -35,8 +39,8 @@ angular.module('route', ['oc.lazyLoad'])
           templateUrl: 'views/tabs_account.html',
           controller: 'tabs_account_index_act'
         }
-      }
-      , resolve: ['$ocLazyLoad', function ($ocLazyLoad) {
+      },
+       resolve: ['$ocLazyLoad', function ($ocLazyLoad) {
         return $ocLazyLoad.load(['ctrls/tabs_account_ctrl.js']);
       }]
     });

@@ -18,7 +18,8 @@ angular.module('starter', ['ionic','oc.lazyLoad', 'route','coms'])//,'ionicLazyL
     $ionicConfigProvider.tabs.position('bottom');//还有其它一些配置到网上查找
     $ionicConfigProvider.platform.android.tabs.position("buttom");
     $ionicConfigProvider.platform.ios.tabs.position("buttom");
-    //$ionicConfigProvider.platform.ios.tabs.style('standard');
+    $ionicConfigProvider.platform.ios.tabs.style('standard');
+    $ionicConfigProvider.platform.android.tabs.style('standard');
     //$ionicConfigProvider.platform.ios.tabs.position('bottom');
     //$ionicConfigProvider.platform.android.tabs.style('standard');
     //$ionicConfigProvider.platform.android.tabs.position('bottom');

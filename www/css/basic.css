@@ -1,1 +1,54 @@
-*{margin:0;padding:0;}
+/* reset */
+body, h1, h2, h3, h4, h5, h6, p, dl, dd, ul, ol, form, input, textarea, th, td, select {
+  margin: 0;
+  padding: 0;
+}
+em {
+  font-style: normal;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+img {
+  border: none;
+  vertical-align: top;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input, textarea {
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+body {
+  font-size: 12px;
+  font-family: "微软雅黑";
+}
+
+/* end reset */
+
+/*public css begin*/
+.f12{font-size:12px!important;}
+.f14{font-size:14px!important;}
+.f16{font-size:16px!important;}
+.clearfix{zoom:1;}
+.clearfix:after{display:block;content:'';clear: both}
+/*public css end*/
+
+
+/*商品列表类*/
+.list .item-thumbnail-left .title{color:#0088D1}
+.list .item-thumbnail-left .disc{color:gray;}
+.list .item-thumbnail-left .disc{color:gray;}
+.list .item-thumbnail-left .note .price{color:#F00;float:left;}
+.list .item-thumbnail-left .note .hot{color:gray;font-size:12px;float:right;}

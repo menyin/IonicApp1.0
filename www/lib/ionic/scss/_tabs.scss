@@ -28,10 +28,10 @@
   line-height: $tabs-height;
 
   @media (min--moz-device-pixel-ratio: 1.5),
-         (-webkit-min-device-pixel-ratio: 1.5),
-         (min-device-pixel-ratio: 1.5),
-         (min-resolution: 144dpi),
-         (min-resolution: 1.5dppx) {
+  (-webkit-min-device-pixel-ratio: 1.5),
+  (min-device-pixel-ratio: 1.5),
+  (min-resolution: 144dpi),
+  (min-resolution: 1.5dppx) {
     padding-top: 2px;
     border-top: none !important;
     border-bottom: none;
@@ -294,7 +294,7 @@
 ion-tabs {
   @include tabs-standard-color('tabs-color-active-light', $light, $dark);
   @include tabs-standard-color('tabs-color-active-stable', $stable, $dark);
-  @include tabs-standard-color('tabs-color-active-positive', $positive, $dark);
+  @include tabs-standard-color('tabs-color-active-positive', $light, $light);
   @include tabs-standard-color('tabs-color-active-calm', $calm, $dark);
   @include tabs-standard-color('tabs-color-active-assertive', $assertive, $dark);
   @include tabs-standard-color('tabs-color-active-balanced', $balanced, $dark);
@@ -332,12 +332,12 @@ ion-tabs {
         transition: color .2s ease;
       }
     }
-   &:not(.tabs-icon-left):not(.tabs-icon-top){
-       .tab-item{
-          &.tab-item-active,
-          &.active,
-          &.activated {
-             .tab-title, i{
+    &:not(.tabs-icon-left):not(.tabs-icon-top){
+      .tab-item{
+        &.tab-item-active,
+        &.active,
+        &.activated {
+          .tab-title, i{
             display:block;
             margin-top: -$tabs-striped-border-width + 1px;
           }
@@ -345,13 +345,13 @@ ion-tabs {
       }
     }
     &.tabs-icon-left{
-       .tab-item{
-          margin-top: 1px;
-          &.tab-item-active,
-          &.active,
-          &.activated {
-            .tab-title, i {
-              margin-top: -0.1em;
+      .tab-item{
+        margin-top: 1px;
+        &.tab-item-active,
+        &.active,
+        &.activated {
+          .tab-title, i {
+            margin-top: -0.1em;
           }
         }
       }
@@ -442,8 +442,8 @@ ion-tabs {
     margin-top: -.1em;
 
     &:before {
-    font-size: $tabs-icon-size - 8;
-    line-height: $tabs-height;
+      font-size: $tabs-icon-size - 8;
+      line-height: $tabs-height;
     }
   }
 }

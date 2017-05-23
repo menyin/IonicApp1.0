@@ -8,7 +8,6 @@ angular.module('daos'
   .factory('ser_dao',['$q','ip_const',function ($q,ip_const) {
     return {
       get: function (url,parms) {
-        debugger;
         var def=$q.defer();
         setTimeout(function () {
           def.resolve(ip_const);
