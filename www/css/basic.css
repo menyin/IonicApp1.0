@@ -43,12 +43,26 @@ body {
 .f16{font-size:16px!important;}
 .clearfix{zoom:1;}
 .clearfix:after{display:block;content:'';clear: both}
+.gray{color:gray!important;}
 /*public css end*/
 
-
-/*商品列表类*/
+/*商品列表类 begin*/
 .list .item-thumbnail-left .title{color:#0088D1}
 .list .item-thumbnail-left .disc{color:gray;}
 .list .item-thumbnail-left .disc{color:gray;}
-.list .item-thumbnail-left .note .price{color:#F00;float:left;}
-.list .item-thumbnail-left .note .hot{color:gray;font-size:12px;float:right;}
+.list .item-thumbnail-left .note_left{color:#F00;float:left;}
+.list .item-thumbnail-left .note_right{color:gray;font-size:12px;float:right;}
+/*商品列表类 end*/
+
+/*数字累加器*/
+.btn_list_addtor{display: block;border:1px solid gray;width: 80px;height: 25px;line-height: 25px;}
+.btn_list_addtor a:first-child{float:left;width:25px;height: 25px; vertical-align: middle;}
+.btn_list_addtor a:last-child{float:right;width:25px;height: 25px;vertical-align: middle;}
+.btn_list_addtor input[type=text]{margin:0 auto;border-left:1px solid gray;border-right:1px solid gray;width:28px;height: 25px;vertical-align: middle;}
+/*数字累加器*/
+
+/*公共底部 begin*/
+.footer{height:80px;line-height:46px;text-align:center;font-size:12px;background:#f7f7f7;margin-top:20px;}
+.footer a{color:#0088D1;margin:4px;font-size:16px;}
+.footer address{color:gray;}
+/*公共底部 end*/

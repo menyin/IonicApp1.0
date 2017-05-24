@@ -1,1 +1,7 @@
-#tabs_account{}
+#tabs_account .my_header .list {margin: 0;padding:0;}
+#tabs_account .my_header .list .item{border:none;background: #3AABE8;}
+#tabs_account .my_header .list .item h2{padding-top:10px;color:#fff;}
+#tabs_account .my_header .list .item p{color:#fff;}
+#tabs_account .my_header .button-bar{border:none;border-shadow:0 1px 1px gray;}
+#tabs_account .my_header .button-bar .button{height:20px; line-height:14px;padding-top:4px;font-size:14px; border-top:none;border-radius:0;color:#eee;}
+#tabs_account .my_header .button-bar .button p{line-height:22px;color:#fff;}

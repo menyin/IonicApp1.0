@@ -3,9 +3,10 @@
     <!--首页幻灯片 begin-->
     <div class="banner swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="daos/test_datas/banner1.jpg"/></div>
+        <div class="swiper-slide" ng-repeat="ad in adList"><img src="{{ad.src}}"/></div>
+        <!--<div class="swiper-slide"><img src="daos/test_datas/banner1.jpg"/></div>
         <div class="swiper-slide"><img src="daos/test_datas/banner2.jpg"/></div>
-        <div class="swiper-slide"><img src="daos/test_datas/banner3.jpg"/></div>
+        <div class="swiper-slide"><img src="daos/test_datas/banner3.jpg"/></div>-->
       </div>
       <div class="swiper-pagination"></div>
     </div>
@@ -85,8 +86,8 @@
           <p class="disc">此商品为爆款，不参加满减活动！数量有限，先抢先得！智能彩电节，点击抢购</p>
 
           <p class="note">
-            <i class="price">￥3299.00</i>
-            <i class="hot">8220次</i>
+            <i class="note_left">￥3299.00</i>
+            <i class="note_right">8220次</i>
           </p>
         </a>
         <a class="item item-thumbnail-left" href="#">
@@ -221,7 +222,8 @@
     <!--图片分享 end-->
 
     <div class="footer clearfix">
-      <div class="title"><a href="#">触屏版</a>|<a href="#">电脑版</a>|<a href="#">回到顶部</a></div>
+        <p class="title"><a href="#">触屏版</a>|<a href="#">电脑版</a>|<a href="#">回到顶部</a></p>
+        <address>福建省厦门市思明区软件园二期望海路37号402</address>
     </div>
   </ion-content>
 </ion-view>

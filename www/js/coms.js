@@ -65,11 +65,21 @@ angular.module('coms',[])
  *   alert(enumDemo.OK+'---'+enumDemo.OK.msg);
  */
 function Enum(aParm){
+  this.aParm = aParm;
   for (var i=0;i<aParm.length;i++) {
     this[aParm[i].name] = new Number(aParm[i].val);
     this[aParm[i].name].msg = aParm[i].msg;
   }
 }
+Enum.prototype.toEnum= function (iCode) {
+  for (var i=0;i<this.aParm.length;i++) {
+    if (this.aParm[i].val==iCode) {
+      return this[this.aParm[i].name];
+      break;
+    }
+  }
+  return null;
+};
 
 /*
 var enumDemo=new Enum([
