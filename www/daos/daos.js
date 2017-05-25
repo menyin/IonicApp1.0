@@ -3,11 +3,13 @@
  */
 angular.module('daos'
   , [{
-    files: ['js/coms.js'], cache: false
+    files: [
+      'js/coms.js'
+    ], cache: false
   }])
   .factory('ser_dao'
-   ,['$q','$http','$ionicLoading','$location','ip_const','enum_com'
-    ,function ($q,$http,$ionicLoading,$location,ip_const,enum_com) {
+   ,['$q','$http','$location','ip_const','enum_com','pop_com'
+    ,function ($q,$http,$location,ip_const,enum_com,pop_com) {
     return {
       /***
        * 基础ajax请求
@@ -27,45 +29,40 @@ angular.module('daos'
        */
       ajax: function (config) {
         var def=$q.defer();
-        $ionicLoading.show({
-          duration: 20000,
-          template: '数据加载中...'
-        });
+        pop_com.loading(true);//显示加载动画
         $http(config).then(function (resp) {
           var eObj=enum_com.http.toEnum(resp.status);//转换为枚举项对象
-          switch (resp.status) {
-            /*处理类型：直接返回数据promise*/
-            case enum_com.http.OK :
-              def.resolve({data:resp.data,msg:eObj.msg});
+          /*处理类型：直接返回数据promise*/
+          if (resp.status==enum_com.http.OK) {
+            debugger;
+            def.resolve({data:resp.data,e:eObj});
+            pop_com.loading(false);//隐藏加载动画
+
             /*处理类型：直接跳转登录页*/
-            case enum_com.http.NoAuth:
-            case enum_com.http.IdentityFail:
-              alert(eObj.msg, function () {
-                $location.path('/tabs/login');
-              });//提示2秒后跳转
-              break;
-            /*处理类型：提示信息并返回数据promise*/
-           /* case enum_com.http.PwdError:
-            case enum_com.http.NotFoundUser:
-            case enum_com.http.PwdModifyFail:*/
-            default :
-              debugger;
-              alert(eObj.msg, function () {
-                def.resolve({data:resp.data,msg:eObj.msg});
-              });//提示2秒后执行
+          }else if ((resp.status==enum_com.http.NoAuth)||(resp.status==enum_com.http.IdentityFail)) {
+            debugger;
+            pop_com.loading(false);//隐藏加载动画
+            pop_com.tip(eObj.msg, function () {//提示
+              $location.path('/tabs/login');//提示2.5秒后跳转
+              /*def.reject({data:resp.data,e:eObj});*/
+            });
+
+          /*处理类型：提示信息并返回数据promise 如：PwdError、NotFoundUser、PwdModifyFail*/
+          }else{
+            pop_com.loading(false);//隐藏加载动画
+            pop_com.tip(eObj.msg, function () {//提示
+              def.resolve({data:resp.data,e:eObj});
+            });
           }
-          debugger;
-          def.resolve(data);
-          $ionicLoading.hide();
+
         },function (resp) {
           debugger;
-          def.reject(data);
-          $ionicLoading.hide();
+          enum_com.pop_com.loading(false);//隐藏加载动画
+          enum_com.pop_com.tip(eObj.msg, function () {//提示
+            def.reject({data:resp.data,msg:enum_com.http.Undefined.msg});
+          });
         });
-        /*setTimeout(function () {
-          def.resolve(ip_const);
-          $ionicLoading.hide();
-        },3000);*/
+
         return def.promise;
       },
 

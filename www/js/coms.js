@@ -1,7 +1,8 @@
 /**
  * Created by CNY on 2017/5/17.
  */
-angular.module('coms',[])
+angular.module('coms' ,
+  [])
   .factory('func_com', [function () {
     return {
       parseInt:function(obj) { return parseInt(obj);
@@ -32,8 +33,66 @@ angular.module('coms',[])
         {name:'IdentityFail',val:'420',msg:'身份验证失败'},//
         {name:'PwdError',val:'421',msg:'输入密码错误'},//
         {name:'NotFoundUser',val:'422',msg:'找不到该用户'},//
-        {name:'PwdModifyFail',val:'423',msg:'密码修改失败'}//
+        {name:'PwdModifyFail',val:'423',msg:'密码修改失败'},//
+        {name:'Undefined',val:'423',msg:'发生未知错误'}//
       ])
+    }
+  }])
+
+  .factory('pop_com',['$timeout','$ionicPopup','$ionicLoading' ,function($timeout,$ionicPopup,$ionicLoading){
+    return{
+      alert:function(msg,callback,title){
+        var sTitle = title || '提示';
+        var alertPopup = $ionicPopup.alert({
+          title: sTitle,
+          template:msg
+        });
+        if (callback) {
+          alertPopup.then(function(res) {
+            callback();
+          });
+        }
+      },
+      tip:function(msg,callback,times,title,subTitle){
+        // 一个精心制作的自定义弹窗
+        var myPopup = $ionicPopup.show({
+          template: '<p style="text-align: center;">'+msg+'</p>'
+
+        });
+        if (callback) {
+          myPopup.then(function(res) {
+            callback();
+          });
+        }
+        $timeout(function() {
+          myPopup.close(); //由于某种原因3秒后关闭弹出
+        }, times||2500);
+      },
+      confirm:function(msg,funcOk,funcFail,title){
+        var confirmPopup = $ionicPopup.confirm({
+          title: title||'信息',
+          template: msg
+        });
+        confirmPopup.then(function(res) {
+          if (funcOk) {
+            funcOk();
+          }
+        },function() {
+          if (funcFail) {
+            funcFail();
+          }
+        });
+      },
+      loading: function (bShow) {
+        if (bShow) {
+          $ionicLoading.show({
+            duration: 20000,
+            template: '数据加载中...'
+          });
+        }else {
+          $ionicLoading.hide();
+        }
+      }
     }
   }])
   .factory('token_com',[function(){

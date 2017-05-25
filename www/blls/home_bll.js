@@ -13,9 +13,10 @@ angular.module('user_bll'
         var url = 'http://localhost:10080/aspx/mobile/usercenter.aspx?action=index';
         ser_dao.jsonp(url,null)
           .then(function (success) {
-            debugger;
+            console.log('bll回调ok');
             def.resolve(success);
           }, function (error) {
+            console.log('bll回调error');
             def.reject(error);
           });
 
