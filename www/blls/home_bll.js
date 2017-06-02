@@ -10,7 +10,7 @@ angular.module('user_bll'
     return{
       getAdData: function () {
         var def=$q.defer();
-        var url = 'http://localhost:10080/aspx/mobile/usercenter.aspx?action=index';
+        /*var url = 'http://localhost:10080/aspx/mobile/usercenter.aspx?action=index';
         ser_dao.jsonp(url,null)
           .then(function (success) {
             console.log('bll回调ok');
@@ -18,9 +18,9 @@ angular.module('user_bll'
           }, function (error) {
             console.log('bll回调error');
             def.reject(error);
-          });
+          });*/
 
-       /* def.resolve([{src:'daos/test_datas/banner1.jpg'},{src:'daos/test_datas/banner2.jpg'},{src:'daos/test_datas/banner3.jpg'},{src:'daos/test_datas/banner2.jpg'}]);*/
+        def.resolve({data:[{src:'daos/test_datas/banner1.jpg'},{src:'daos/test_datas/banner2.jpg'},{src:'daos/test_datas/banner3.jpg'},{src:'daos/test_datas/banner2.jpg'}]});
         return def.promise;
       }
     }

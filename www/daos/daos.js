@@ -30,6 +30,7 @@ angular.module('daos'
       ajax: function (config) {
         var def=$q.defer();
         pop_com.loading(true);//显示加载动画
+        debugger;
         $http(config).then(function (resp) {
           var eObj=enum_com.http.toEnum(resp.status);//转换为枚举项对象
           /*处理类型：直接返回数据promise*/
@@ -57,8 +58,9 @@ angular.module('daos'
 
         },function (resp) {
           debugger;
-          enum_com.pop_com.loading(false);//隐藏加载动画
-          enum_com.pop_com.tip(eObj.msg, function () {//提示
+          pop_com.loading(false);//隐藏加载动画
+          var eObj=enum_com.http.toEnum(resp.status)||enum_com.http.Undefined;//转换为枚举项对象
+          pop_com.tip(eObj.msg, function () {//提示
             def.reject({data:resp.data,msg:enum_com.http.Undefined.msg});
           });
         });

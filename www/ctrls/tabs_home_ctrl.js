@@ -13,7 +13,12 @@ angular.module('tabs_home_ctrl'
   }]
 )
   .controller('tabs_home_act', ['$scope','home_ser',function ($scope,home_ser) {
-
+    $scope.test = function () {
+      $ionicBackdrop.retain();
+      $timeout(function() {
+        $ionicBackdrop.release();
+      }, 1000);
+    };
     /*页面加载初始化*/
     $scope.$watch('$viewContentLoaded', function () {
       initBanner();
@@ -23,9 +28,8 @@ angular.module('tabs_home_ctrl'
      * 初始化banner轮播
      */
     function initBanner() {
-      home_ser.getAdData().then(function (data) {
-        $scope.adList = data;
-
+      home_ser.getAdData().then(function (result) {
+        $scope.adList = result.data;
         var headerSwiper = new Swiper('.swiper-container', {
           paginationClickable: true,//分页器可以被点击
           autoplay: 0,//轮播时间间隔

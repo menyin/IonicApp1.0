@@ -21,11 +21,11 @@ angular.module('coms' ,
       http:new Enum([
         /*常规响应码*/
         {name:'OK',val:'200',msg:'成功'},//服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。
-        {name:'NoAuth',val:'203',msg:'非授权信息'},//服务器已成功处理了请求，但返回了可能来自另一来源的信息。
-        {name:'NotModified',val:'304',msg:'未修改'},//自从上次请求后，请求的网页未被修改过。服务器返回此响应时，不会返回网页内容。
-        {name:'NotFound',val:'404',msg:'未找到'},//服务器找不到请求的网页。例如，如果请求是针对服务器上不存在的网页进行的，或者请求地址错误。
-        {name:'BadRequest',val:'400',msg:'参数错误|错误请求'},//服务器不理解请求的语法。
-        {name:'Forbidden',val:'403',msg:'访问地址非法|已禁止'},//服务器拒绝请求。
+        {name:'NoAuth',val:'203',msg:'请求资源未授权'},//服务器已成功处理了请求，但返回了可能来自另一来源的信息。
+        {name:'NotModified',val:'304',msg:'数据未修改'},//自从上次请求后，请求的网页未被修改过。服务器返回此响应时，不会返回网页内容。
+        {name:'NotFound',val:'404',msg:'请求资源未找到'},//服务器找不到请求的网页。例如，如果请求是针对服务器上不存在的网页进行的，或者请求地址错误。
+        {name:'BadRequest',val:'400',msg:'参数或请求错误'},//服务器不理解请求的语法。
+        {name:'Forbidden',val:'403',msg:'访问地址非法或被禁止'},//服务器拒绝请求。
         {name:'ServerUnable',val:'503',msg:'服务不可用'},//目前无法使用服务器（由于超载或进行停机维护）。通常，这只是一种暂时的状态。
         {name:'ServerError',val:'500',msg:'服务器内部错误'},//服务器遇到错误，无法完成请求。
 
@@ -41,11 +41,27 @@ angular.module('coms' ,
 
   .factory('pop_com',['$timeout','$ionicPopup','$ionicLoading' ,function($timeout,$ionicPopup,$ionicLoading){
     return{
+      /***
+       * 自定义弹出框
+       * @param config 配置对象
+       * @remark 具体配置详见$ionicPopup.show()使用即可
+       */
+      dialog:function(config){
+        var dialog = $ionicPopup.show(config);
+        $timeout(function() {
+          dialog.close(); //由于某种原因3秒后关闭弹出
+        }, 20000);
+      },
+      /***
+       * alert弹出框
+       * @param msg 信息文字
+       * @param [callback] 确定回调
+       * @param [title] 标题
+       */
       alert:function(msg,callback,title){
-        var sTitle = title || '提示';
         var alertPopup = $ionicPopup.alert({
-          title: sTitle,
-          template:msg
+          title: title || '<p style="text-align: left;">提示</p>',
+          template:'<p style="text-align: center;">'+msg+'</p>'
         });
         if (callback) {
           alertPopup.then(function(res) {
@@ -53,11 +69,19 @@ angular.module('coms' ,
           });
         }
       },
+      /***
+       * tip即时弹出框
+       * @param msg 信息文字
+       * @param [callback] 确定回调
+       * @param [times] 显示时间，默认2500ms
+       * @param [title] 标题
+       * @param [subTitle] 副标题
+       */
       tip:function(msg,callback,times,title,subTitle){
         // 一个精心制作的自定义弹窗
         var myPopup = $ionicPopup.show({
-          template: '<p style="text-align: center;">'+msg+'</p>'
-
+          template: '<p style="text-align: center;">'+msg+'</p>',
+          title: title || '<p style="text-align: left;">信息</p>'
         });
         if (callback) {
           myPopup.then(function(res) {
@@ -68,10 +92,21 @@ angular.module('coms' ,
           myPopup.close(); //由于某种原因3秒后关闭弹出
         }, times||2500);
       },
+      /***
+       * confirm确认弹出框
+       * @param msg 信息文字
+       * @param [funcOk] 确定回调
+       * @param [funcFail] 取消回调
+       * @param [title] 标题，默认'信息'
+       */
       confirm:function(msg,funcOk,funcFail,title){
         var confirmPopup = $ionicPopup.confirm({
           title: title||'信息',
-          template: msg
+          template: '<p style="text-align: center;">'+msg+'</p>',
+          cancelText: '取消', // String (默认: 'Cancel')。一个取消按钮的文字。
+          cancelType: 'button-default', // String (默认: 'button-default')。取消按钮的类型。
+          okText: '确定', // String (默认: 'OK')。OK按钮的文字。
+          okType: 'button-positive', // String (默认: 'button-positive')。OK按钮的类型。
         });
         confirmPopup.then(function(res) {
           if (funcOk) {
@@ -83,7 +118,11 @@ angular.module('coms' ,
           }
         });
       },
-      loading: function (bShow) {
+      /***
+       * 加载动画
+       * @param bShow 为true则显示加载动画，否则关闭
+       */
+      loading:function(bShow) {
         if (bShow) {
           $ionicLoading.show({
             duration: 20000,
