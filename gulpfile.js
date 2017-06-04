@@ -55,7 +55,7 @@ gulp.task('git-check', function(done) {
 /*-----------------------------------自动创建普通页面模块 begin-----------------------------------------------*/
 /*定义要创建页面相关信息对象*/
 //注意：如果页面模块为某个模块下的子模块，则name必须用"【父模块】_【当前模块】"的方式命名
-var newModule = {name: 'huodong_three', title: '活动页3'};
+var newModule = {name: 'test_one', title: '测试页1'};
 
 
 var aName,pointName, lineName, iIndexLast,ctrlName ,actName;
@@ -78,7 +78,7 @@ var rename = require("gulp-rename");
 var replace = require('gulp-replace');
 
 /*生成一个新的页面模块(包含视图、路由、控制器)*/
-gulp.task('newModuleTask', ['create_view', 'create_route', 'create_ctrl']);
+gulp.task('newModule', ['create_view', 'create_route', 'create_ctrl']);
 
 /*创建视图*/
 gulp.task('create_view', function () {

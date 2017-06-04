@@ -83,30 +83,17 @@ angular.module('route', ['oc.lazyLoad'])
           return $ocLazyLoad.load(['ctrls/tabs_goods_ctrl.js']);
         }]
       })
-       /*活动页*/
-      .state('tabs.huodong', {
-        url: '/huodong',
+       /*测试页1*/ 
+      .state('tabs.test.one', {
+        url: '/test/one',
         views: {
-          'tabs_huodong': {
-            templateUrl: 'views/tabs_huodong.html',
-            controller: 'tabs_huodong_act'
+          'tabs_test_one': {
+            templateUrl: 'views/tabs_test_one.html',
+            controller: 'tabs_test_one_act'
           }
         },
        resolve: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load(['ctrls/tabs_huodong_ctrl.js']);
-        }]
-      })
-       /*活动页*/
-      .state('tabs.huodong.one', {
-        url: '/huodong/one',
-        views: {
-          'tabs_huodong_one': {
-            templateUrl: 'views/tabs_huodong_one.html',
-            controller: 'tabs_huodong_act'
-          }
-        },
-       resolve: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load(['ctrls/tabs_huodong_ctrl.js']);
+          return $ocLazyLoad.load(['ctrls/tabs_test_ctrl.js']);
         }]
       });
     $urlRouterProvider.otherwise('/tabs/home');
