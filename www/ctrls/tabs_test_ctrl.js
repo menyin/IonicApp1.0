@@ -11,4 +11,7 @@ angular.module('tabs_test_ctrl'
 )
   .controller('tabs_test_one_act', ['$scope', function ($scope) {
 
+  }])
+  .controller('tabs_test_two_act', ['$scope', function ($scope) {
+
   }]);

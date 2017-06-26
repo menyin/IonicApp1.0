@@ -95,6 +95,19 @@ angular.module('route', ['oc.lazyLoad'])
        resolve: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load(['ctrls/tabs_test_ctrl.js']);
         }]
+      })
+       /*测试2*/ 
+      .state('tabs.test.two', {
+        url: '/test/two',
+        views: {
+          'tabs_test_two': {
+            templateUrl: 'views/tabs_test_two.html',
+            controller: 'tabs_test_two_act'
+          }
+        },
+       resolve: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load(['ctrls/tabs_test_ctrl.js']);
+        }]
       });
     $urlRouterProvider.otherwise('/tabs/home');
 

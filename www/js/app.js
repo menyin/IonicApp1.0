@@ -9,6 +9,8 @@ angular.module('starter', ['ionic','oc.lazyLoad', 'route','coms'])//,'ionicLazyL
       }
       if (window.StatusBar) {
         StatusBar.styleDefault();
+        // org.apache.cordova.statusbar required
+        //StatusBar.styleLightContent();
       }
     });
   })
@@ -30,8 +32,9 @@ angular.module('starter', ['ionic','oc.lazyLoad', 'route','coms'])//,'ionicLazyL
     //$ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');
     //$ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-android-arrow-back');
     //
-    //$ionicConfigProvider.platform.ios.views.transition('ios');
-    //$ionicConfigProvider.platform.android.views.transition('android');
+    //$ionicConfigProvider.platform.ios.views.transition('ios');//设置ios视图转场效果
+    //$ionicConfigProvider.platform.android.views.transition('android');//设置ios视图转场效果
+    $ionicConfigProvider.platform.android.views.maxCache(5); //安卓缓存5个view，ios默认10个
   }])
 
   /*网站主域配置*/
