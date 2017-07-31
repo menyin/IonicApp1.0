@@ -609,6 +609,7 @@ angular.module('coms' ,
       }
       };
   }])
+
   .factory('valid_com', [function () {
     return {
       isNum:function (obj) {
@@ -616,6 +617,7 @@ angular.module('coms' ,
       }
     }
   }])
+
   .factory('enum_com', [function () {
     return{
       http:new Enum([

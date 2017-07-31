@@ -12,6 +12,10 @@ angular.module('route', ['oc.lazyLoad'])
 
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
+      .state('test', {//当用服务进行跳转时可以用这个名称作为跳转目标页面的标识
+        url: '/test',
+        templateUrl: 'views/test.html'
+      })
       .state('tabs', {//当用服务进行跳转时可以用这个名称作为跳转目标页面的标识
         url: '/tabs',
         abstract: true,
@@ -83,7 +87,7 @@ angular.module('route', ['oc.lazyLoad'])
           return $ocLazyLoad.load(['ctrls/tabs_goods_ctrl.js']);
         }]
       })
-       /*测试页1*/ 
+       /*测试页1*/
       .state('tabs.test.one', {
         url: '/test/one',
         views: {
@@ -96,7 +100,7 @@ angular.module('route', ['oc.lazyLoad'])
           return $ocLazyLoad.load(['ctrls/tabs_test_ctrl.js']);
         }]
       })
-       /*测试2*/ 
+       /*测试2*/
       .state('tabs.test.two', {
         url: '/test/two',
         views: {
