@@ -14,7 +14,11 @@ angular.module('route', ['oc.lazyLoad'])
     $stateProvider
       .state('test', {//当用服务进行跳转时可以用这个名称作为跳转目标页面的标识
         url: '/test',
-        templateUrl: 'views/test.html'
+        templateUrl: 'views/test.html',
+        controller: 'test',
+        resolve: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load(['ctrls/test_ctrl.js']);
+        }]
       })
       .state('tabs', {//当用服务进行跳转时可以用这个名称作为跳转目标页面的标识
         url: '/tabs',
